@@ -21,9 +21,7 @@ class App {
         const coin = util.getConfigurationCoin();
         Object.keys(this.statusBarItems).forEach((item) => {
             if (item !== coin) {
-                this.statusBarItems[item].hide();
-                this.statusBarItems[item].dispose();
-                delete this.statusBarItems[item];
+                this.deletePrice(item)
             }
         });
         this.init();
@@ -51,6 +49,11 @@ class App {
             this.statusBarItems[symbol] = this.createStatusBarItem(statusBarItemsText);
         }
     }
+    deletePrice(symbol){
+        this.statusBarItems[symbol].hide();
+        this.statusBarItems[symbol].dispose();
+        delete this.statusBarItems[symbol];
+    }
     /**
      * 创建statusBar 
      * @param {string} text 
@@ -69,7 +72,14 @@ class App {
         
     }
     init() {
-        
+        const enable = util.getConfigurationEnable()
+        if(!enable){
+            this.timer && clearInterval(this.timer);
+            Object.keys(this.statusBarItems).forEach((item) => {
+                this.deletePrice(item)
+            })
+            return
+        }
         this.coin = util.getConfigurationCoin();
         this.updateInterval = util.getConfigurationTime()
         this.API_ADDRESS = `https://fapi.binance.com/fapi/v1/ticker/price?symbol=${this.coin.toLowerCase()}`

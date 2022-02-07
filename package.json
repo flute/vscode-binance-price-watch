@@ -23,6 +23,11 @@
   "contributes": {
     "configuration": {
       "properties": {
+        "binance-price-watch.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "开启显示币价格"
+        },
         "binance-price-watch.symbol": {
           "type": "string",
           "default": "btcusdt",

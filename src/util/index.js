@@ -1,6 +1,13 @@
 const vscode = require('vscode');
 const util = {
   /**
+   * 获取配置文件的开关
+   */
+  getConfigurationEnable() {
+    const config = vscode.workspace.getConfiguration();
+    return config.get('binance-price-watch.enable');
+  },
+  /**
    * 获取配置文件的监听币种
    */
   getConfigurationCoin() {
