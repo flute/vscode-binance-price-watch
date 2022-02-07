@@ -1,0 +1,64 @@
+{
+  "name": "binance-price-watch",
+  "displayName": "binance-price-watch",
+  "description": "VS Code配置状态栏查看 币安合约 实时最新价格",
+  "version": "1.2.0",
+  "publisher": "binance-price-watch",
+  "keywords": [
+    "btc",
+    "eth",
+    "binance",
+    "vscode"
+  ],
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension",
+  "contributes": {
+    "configuration": {
+      "properties": {
+        "binance-price-watch.symbol": {
+          "type": "string",
+          "default": "btcusdt",
+          "description": "配置需要监控的币（小写）"
+        },
+        "binance-price-watch.symbolText": {
+          "type": "string",
+          "default": "比特币",
+          "description": "币简称"
+        },
+        "binance-price-watch.updateInterval": {
+          "type": "number",
+          "default": 3000,
+          "description": "配置轮询请求最新数据的时间间隔，单位：毫秒"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "eslint": "^4.11.0",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "open": "^6.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenchenwuai/vscode-binance-price-watch"
+  },
+  "__npminstall_done": false
+}
