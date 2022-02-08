@@ -3,7 +3,7 @@
   "displayName": "binance-price-watch",
   "description": "VS Code配置状态栏查看 币安合约 实时最新价格",
   "version": "1.2.1",
-  "publisher": "binance-price-watch",
+  "publisher": "chenwuai",
   "keywords": [
     "btc",
     "eth",
