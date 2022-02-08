@@ -9,13 +9,10 @@ class App {
         this.coin = util.getConfigurationCoin();
         this.updateInterval = util.getConfigurationTime();
         this.timer = null;
-        this.API_ADDRESS = ''; // 交易对地址
+        this.API_ADDRESS = '';
         this.init();
         context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(() => this.handleConfigChange()));
     }
-    /*
-     * 配置文件改变触发
-     */
     handleConfigChange() {
         this.timer && clearInterval(this.timer);
         const coin = util.getConfigurationCoin();
@@ -26,9 +23,6 @@ class App {
         });
         this.init();
     }
-    /**
-     * 获取接口数据
-     */
     fetchData() {
         // @ts-ignore
         axios.get(this.API_ADDRESS)
@@ -54,22 +48,11 @@ class App {
         this.statusBarItems[symbol].dispose();
         delete this.statusBarItems[symbol];
     }
-    /**
-     * 创建statusBar 
-     * @param {string} text 
-     */
     createStatusBarItem(text = '') {
         const barItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
         barItem.text = text;
         barItem.show();
         return barItem;
-    }
-    /**
-     * 动态获取交易所api地址
-     */
-    watcher(){
-        /* 每次init重新更新配置文件的内容 */
-        
     }
     init() {
         const enable = util.getConfigurationEnable()
@@ -82,7 +65,8 @@ class App {
         }
         this.coin = util.getConfigurationCoin();
         this.updateInterval = util.getConfigurationTime()
-        this.API_ADDRESS = `https://fapi.binance.com/fapi/v1/ticker/price?symbol=${this.coin.toLowerCase()}`
+        const baseURL = util.getConfigurationBaseURL()
+        this.API_ADDRESS = `${baseURL}?symbol=${this.coin.toLowerCase()}`
 
         this.fetchData();
         this.timer = setInterval(() => {

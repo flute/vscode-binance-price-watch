@@ -18,7 +18,7 @@
   ],
   "icon": "images/icon.png",
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "main": "./extension",
   "contributes": {
@@ -32,6 +32,7 @@
         "binance-price-watch.symbol": {
           "type": "string",
           "default": "btcusdt",
+          "minLength": 1,
           "description": "Configuring coin that need to monitor"
         },
         "binance-price-watch.symbolText": {
@@ -42,7 +43,14 @@
         "binance-price-watch.updateInterval": {
           "type": "number",
           "default": 3000,
-          "description": "Configure polling requests the latest data time interval, Unit: milliseconds"
+          "minimum": 1000,
+          "description": "Configuring polling requests the latest data time interval, Unit: milliseconds"
+        },
+        "binance-price-watch.url": {
+          "type": "string",
+          "default": "https://fapi.binance.com/fapi/v1/ticker/price",
+          "format": "uri",
+          "description": "Configuring contract base API, (try not to modify)"
         }
       }
     }
