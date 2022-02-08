@@ -1,26 +1,25 @@
 # binance-price-watch
-VS Code配置状态栏查看 币安合约 实时最新价格
+Visual Studio Code extension for display coin contract price via binance API
 
-## 配置:
-修改用户配置，添加你所需要监控的币安合约价格
+## Installation
+Search for **binance-price-watch** in VS Code extensions.
+
+[Visual Studio Code Marketplace page](https://marketplace.visualstudio.com/items?itemName=chenwuai.binance-price-watch)
+
+## Settings
 ```
-  /* 
-   * 说明：开启显示币价格
-   * 设置为false后，不会再显示币的价格
-   */
-  "binance-contract-price.enable": true, 
-  /* 
-   * 说明：配置需要监控的数字货币 
-   * 规则：btc(比特币) + usdt(交易对) = btcusdt
-   */
+  // Enable display price
+  "binance-contract-price.enable": true,
+
+
+  // Configuring coin that need to monitor, "btcusdt" = "btc" + "usdt"
   "binance-contract-price.symbol": "btcusdt", 
-  /* 
-   * 说明：配置需要监控的数字货币简称 比特币|btc 或任意字符
-   */
-  "binance-contract-price.symbolText": "比特币", 
-  /*
-   * 说明：轮询请求API时间
-   * 单位：毫秒
-   */
+
+
+  // Abbreviation
+  "binance-contract-price.symbolText": "btc", 
+
+  
+  // Configure polling requests the latest data time interval, Unit: milliseconds
   "binance-contract-price.updateInterval": 3000
 ```

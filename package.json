@@ -1,7 +1,7 @@
 {
   "name": "binance-price-watch",
   "displayName": "binance-price-watch",
-  "description": "VS Code配置状态栏查看 币安合约 实时最新价格",
+  "description": "Visual Studio Code extension for display coin contract price via binance API",
   "version": "1.2.1",
   "publisher": "chenwuai",
   "keywords": [
@@ -16,6 +16,7 @@
   "categories": [
     "Other"
   ],
+  "icon": "images/icon.png",
   "activationEvents": [
     "*"
   ],
@@ -26,22 +27,22 @@
         "binance-price-watch.enable": {
           "type": "boolean",
           "default": true,
-          "description": "开启显示币价格"
+          "description": "Enable display price"
         },
         "binance-price-watch.symbol": {
           "type": "string",
           "default": "btcusdt",
-          "description": "配置需要监控的币（小写）"
+          "description": "Configuring coin that need to monitor"
         },
         "binance-price-watch.symbolText": {
           "type": "string",
-          "default": "比特币",
-          "description": "币简称"
+          "default": "btc",
+          "description": "Abbreviation"
         },
         "binance-price-watch.updateInterval": {
           "type": "number",
           "default": 3000,
-          "description": "配置轮询请求最新数据的时间间隔，单位：毫秒"
+          "description": "Configure polling requests the latest data time interval, Unit: milliseconds"
         }
       }
     }
